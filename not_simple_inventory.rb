@@ -14,8 +14,8 @@ inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 1
 
 # this function will adjust the table parameters to the largest key value length in the inventory hash
 def print_in_table(inventory)
-  # the following figures out the maximum length of the item string
-  # many things depend on this
+    # the following figures out the maximum length of the item string
+    # many things depend on this
   item_spacing = 0
   quantity_spacing = 0
 
@@ -33,6 +33,9 @@ def print_in_table(inventory)
     puts item.ljust(item_spacing+1) + ": #{quantity}"
   end
 end
+
+
+#begin the actual program loop
 while exit == false do
 
   puts "Welcome to Kellyn and Dave's Fruit Emporium"
@@ -42,7 +45,7 @@ while exit == false do
   puts "3. Update - to update the quantity of an item already in stock"
   puts "4. Remove - to zero out an item"
   puts "5. Exit - will exit the program"
-  puts "What is your selection? Type: print, add, update, or remove"
+  puts "What is your selection? Type: print, add, update, remove or exit"
   menu_selection = gets.chomp.downcase
 
 
@@ -98,7 +101,7 @@ while exit == false do
   puts "Would you like to exit? [y/n]: "
   exit = gets.chomp.downcase
 
-  #the condition for ending our while which ends our program
+  #the condition for ending our while that ends our program
     if exit == "y" || exit=="yes"
       exit = true
     elsif exit == "n" || exit=="no"
