@@ -59,9 +59,9 @@ while exit == false do
       puts inventory
 
     elsif menu_selection == "print" || menu_selection == "1. print" || menu_selection =="1" || menu_selection =="1."
-      #table
+      #table-ish
       inventory.each do |item, quantity|
-          puts item + " : #{quantity}"
+          puts item + ": #{quantity}"
       end
 
     elsif exit == "y" || exit=="yes"
@@ -71,6 +71,8 @@ while exit == false do
     end
   puts "Would you like to exit? [y/n]: "
   exit = gets.chomp.downcase
+
+  #the condition for ending our while which ends our program
     if exit == "y" || exit=="yes"
       exit = true
     elsif exit == "n" || exit=="no"
