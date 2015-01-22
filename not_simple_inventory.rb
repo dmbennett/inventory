@@ -12,6 +12,27 @@
 exit = false
 inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 10}
 
+# this function will adjust the table parameters to the largest key value length in the inventory hash
+def print_in_table(inventory)
+  # the following figures out the maximum length of the item string
+  # many things depend on this
+  item_spacing = 0
+  quantity_spacing = 0
+
+  inventory.each do |item, quantity|
+    item_spacing = item.length
+    quantity_spacing = quantity.size
+    if item_spacing < item.length
+      item_spacing = item.length
+    end
+  end
+
+  #the following prints it using the spacing calculated above
+  puts "ITEM".ljust(item_spacing+1) + ": QUANTITY"
+  inventory.each do |item, quantity|
+    puts item.ljust(item_spacing+1) + ": #{quantity}"
+  end
+end
 while exit == false do
 
   puts "Welcome to Kellyn and Dave's Fruit Emporium"
@@ -37,32 +58,37 @@ while exit == false do
 
         inventory[item_to_add] = quantity_of_item_to_add
 
-      puts inventory
+      print_in_table(inventory)
 
     elsif menu_selection == "remove" || menu_selection =="4. remove" || menu_selection =="4" || menu_selection =="4."
       #remove
-          puts inventory
-          puts "What item would you like to remove?"
+        print_in_table(inventory)
+        puts "What item would you like to remove?"
           item_to_remove = gets.chomp.downcase
           inventory.delete(item_to_remove)
-          puts inventory
+        print_in_table(inventory)
 
     elsif menu_selection == "update" || menu_selection =="3. update" || menu_selection =="3" || menu_selection == "3."
       #update
-      puts inventory
+      print_in_table(inventory)
       puts "Please type the name of the item you would like to update?"
         item_to_update = gets.chomp.downcase
       puts "What is the new quantity of #{item_to_update}?"
         quantity_to_update = gets.chomp.to_i
 
-      inventory[item_to_update] = quantity_to_update
-      puts inventory
+      #handles the special case that we update a quantity of zero, which is equivalent to removing the item
+      if quantity_to_update == 0
+        item_to_update = item_to_remove
+        inventory.delete(item_to_remove)
+      else
+        inventory[item_to_update] = quantity_to_update
+        print_in_table(inventory)
+      end
 
+      print_in_table(inventory)
     elsif menu_selection == "print" || menu_selection == "1. print" || menu_selection =="1" || menu_selection =="1."
       #table-ish
-      inventory.each do |item, quantity|
-          puts item + ": #{quantity}"
-      end
+      print_in_table(inventory)
 
     elsif exit == "y" || exit=="yes"
       exit = true
