@@ -26,7 +26,7 @@ def print_in_table(inventory)
   end
 end
 
-def update_item (inventory, item, quantity)
+def update_item_and_quantity (inventory, item, quantity)
   valid_entry = false
   while valid_entry == false
     if quantity == 0
@@ -43,12 +43,26 @@ def update_item (inventory, item, quantity)
     end
   end
 end
+
+def validate_item (item)
+  valid_entry = false
+  while valid_entry == false
+    item = item
+    if item =~ /\d/
+      puts 'Your item name cannot have a number in it.'
+      puts 'What is the name of your item? '
+      item = gets.chomp.downcase
+    else
+      valid_entry = true
+    end
+  end
+end
 ##################################################################################################################
 exit = false
 #begin the actual program loop, exit when exit = true
 while exit == false do
 
-  puts %q{Welcome to Kellyn and Dave's Fruit Emporium
+  puts %q{Welcome to Kellyn and Dave's Emporium
   Please select an item from the following menu
   1. Print - to print a table of our items and what we have in stock
   2. Update - to add a new item or update the quantity of an item already in stock
@@ -65,9 +79,10 @@ What is your selection? Type: print, update, or remove: }
     #adding items
       puts "What item would like to update or add?"
         item = gets.chomp.downcase
+        validate_item(item)
       puts "Please enter the total quantity: "
         quantity = gets.chomp.to_i
-      update_item(inventory, item, quantity)
+      update_item_and_quantity(inventory, item, quantity)
       print_in_table(inventory)
 
   elsif menu_selection == "remove" || menu_selection =="3. remove" || menu_selection =="3" || menu_selection =="3."
