@@ -5,11 +5,8 @@
 #The user can zero out an item
 #The user cannot put in nonsensical data: -1 bananas
 #When you start the program it gives a list of all the options
-
-
-
+##################################################################################################################
 inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 10}
-
 
 def print_in_table(inventory)
     # the following figures out the maximum length of the item string
@@ -46,19 +43,18 @@ def update_item (inventory, item, quantity)
     end
   end
 end
-
-
+##################################################################################################################
 exit = false
 #begin the actual program loop, exit when exit = true
 while exit == false do
 
-  puts "Welcome to Kellyn and Dave's Fruit Emporium"
-  puts "Please select an item from the following menu"
-  puts "1. Print - to print a table of our items and what we have in stock"
-  puts "2. Update - to add a new item or update the quantity of an item already in stock"
-  puts "3. Remove - to remove an item"
-  puts "4. Exit - will exit the program"
-  puts "What is your selection? Type: print, add, update, remove or exit"
+  puts %q{Welcome to Kellyn and Dave's Fruit Emporium
+  Please select an item from the following menu
+  1. Print - to print a table of our items and what we have in stock
+  2. Update - to add a new item or update the quantity of an item already in stock
+  3. Remove - to remove an item
+  4. Exit - will exit the program
+What is your selection? Type: print, update, or remove: }
   menu_selection = gets.chomp.downcase
 
   if menu_selection == "print" || menu_selection == "1. print" || menu_selection =="1" || menu_selection =="1."
@@ -81,10 +77,6 @@ while exit == false do
         item_to_remove = gets.chomp.downcase
         inventory.delete(item_to_remove)
       print_in_table(inventory)
-
-  elsif exit == "y" || exit=="yes"
-    #exit if they want, otherwise continue loop
-    exit = true
 
   else
     #did they have a typo? then ask them to check again
