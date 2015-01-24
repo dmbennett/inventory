@@ -6,8 +6,6 @@
 #The user cannot put in nonsensical data: -1 bananas
 #When you start the program it gives a list of all the options
 ##################################################################################################################
-inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 10}
-
 def print_in_table(inventory)
   # the following figures out the maximum length of the item string
   item_spacing = 0
@@ -52,12 +50,10 @@ def contains_number? (variable)
   end
 end
 
-
-
-
 ##################################################################################################################
 exit = false
 #begin the actual program loop, exit when exit = true
+inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 10}
 while exit == false do
 
   puts %q{Welcome to Kellyn and Dave's Emporium
