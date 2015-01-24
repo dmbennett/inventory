@@ -50,7 +50,7 @@ end
 exit = false
 #begin the actual program loop, exit when exit = true
 inventory = {"apple" => 1, "banana" => 10, "orange" => 20, "concord grapes" => 10}
-while exit == false do
+until exit do
 
   puts %q{Welcome to Kellyn and Dave's Emporium
   Please select an item from the following menu
