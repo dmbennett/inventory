@@ -20,7 +20,7 @@ def print_in_table(inventory)
   puts "ITEM:".ljust(item_spacing+1) + "| QUANTITY:"
   inventory = inventory.sort_by { |item, quantity| item}
   inventory.each do |item, quantity|
-    puts item.capitalize.ljust(item_spacing+1) + "| #{quantity}"
+    puts item.split.map(&:capitalize).join(' ').ljust(item_spacing+1) + "| #{quantity}"
   end
 end
 
@@ -31,7 +31,7 @@ def update_item_and_quantity (inventory, item, quantity)
       inventory.delete(item)
       valid_entry = true
     elsif quantity < 0
-      puts "You put an invalid entry: #{quantity}"
+      puts "You put an invalid entry: #{quantity}. Please put a positive number."
       puts "Please enter the total quantity: "
       quantity = gets.chomp.to_i
       valid_entry = false
