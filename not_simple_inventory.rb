@@ -58,7 +58,7 @@ until exit do
   2. Update - to add a new item or update the quantity of an item already in stock
   3. Remove - to remove an item
   4. Exit   - will exit the program
-What is your selection? Type: print, update, or remove: }
+What is your selection? Type: print, update, remove or exit: }
   menu_selection = gets.chomp.downcase
 
   if menu_selection == "print" || menu_selection == "1. print" || menu_selection =="1" || menu_selection =="1."
