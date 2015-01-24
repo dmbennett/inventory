@@ -42,12 +42,8 @@ def update_item_and_quantity (inventory, item, quantity)
   end
 end
 
-def contains_number? (variable)
-  if variable =~ /\d/
-    return true
-  else
-    return false
-  end
+def contains_number? (string)
+  (string =~ /\d/) ? true : false
 end
 
 ##################################################################################################################
